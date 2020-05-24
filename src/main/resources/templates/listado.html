@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contribuyentes</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Listado de Contribuyentes</h1>
+    <br>
+    <br>
+    <section>
+        <table class="table table-hover">
+            <thead>
+            <tr class="table-dark">
+                <th scope="col">Codigo</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Importancia</th>
+                <th scope="col">NIT</th>
+                <th scope="col">Fecha</th>
+            </tr>
+            </thead>
+            <th:block th:each="contri, row: ${contribuyente}">
+                <tr>
+                    <th th:text="${contri.codigoContribuyente}"></th>
+                    <th th:text="${contri.nombre}"></th>
+                    <th th:text="${contri.apellido}"></th>
+                    <th th:text="${contri.importancia.nombre}"></th>
+                    <th th:text="${contri.nit}"></th>
+                    <th th:text="${contri.fechaIngreso}"></th>
+                </tr>
+                </tbody>
+            </th:block>
+        </table>
+    </section>
+</div>
+
+</body>
+</html>

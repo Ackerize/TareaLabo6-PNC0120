@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container col-md-6">
+    <br>
+    <div class="jumbotron">
+        <h1>INGRESAR CONTRIBUYENTE</h1>
+        <form th:action="@{/insertarContribuyente}" th:object="${contribuyente}" method="post">
+            <div class="form-group">
+                <label class="col-form-label">Seleccione la importancia</label>
+                <th><select class="custom-select" th:field="*{importancia.codigoImportancia}">
+                        <option th:each="i: ${importancia}" th:value="${i.codigoImportancia}"
+                        th:text="${i.nombre}">
+                        </option>
+                    </select>
+
+                </th>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Nombre</label>
+                <input type="text" class="form-control"  placeholder="Ingrese el nombre" th:field="*{nombre}">
+                <span th:errors="*{nombre}" style="color:#E81505"></span>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-form-label">Apellido</label>
+                <input type="text" class="form-control" placeholder="Ingrese el apellido" th:field="*{apellido}">
+                <span th:errors = "*{apellido}" style= "color:#E81505"></span>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-form-label">NIT</label>
+                <input type="text" class="form-control" placeholder="Ingrese el carne" th:field="*{nit}">
+                <span th:errors = "*{nit}" style= "color:#E81505"></span>
+            </div>
+
+            <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group mr-5" role="group" aria-label="Third group">
+                    <input type="submit" class="btn btn-primary" value = "Guardar"></input>
+                </div>
+                <div class="btn-group" role="group" aria-label="Third group">
+                    <a  href= "/listado " class="btn btn-warning">Ver Contribuyentes</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
